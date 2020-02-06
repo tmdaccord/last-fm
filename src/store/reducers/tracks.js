@@ -1,6 +1,5 @@
 import {FETCH_TOP_TRACKS_START, FETCH_TRACKS_FAIL, FETCH_TRACKS_SUCCESS} from "../actions/actionTypes";
 
-
 const initialState = {
     topTracks: [],
     loading: false,

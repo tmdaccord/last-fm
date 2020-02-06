@@ -5,15 +5,15 @@ import TracksList from "../../components/TracksList/TracksList";
 import {fetchTopTracks} from "../../store/actions/tracks";
 
 class TopTracksList extends Component {
-    componentDidMount () {
-        this.props.fetchTopTracks();
+    componentDidMount() {
+        this.props.fetchTopTracks(5);
     }
 
     render() {
         return (
             <React.Fragment>
                 <h2>Top Tracks</h2>
-                <TracksList/>
+                <TracksList tracks={this.props.tracks}/>
             </React.Fragment>
         );
     }
@@ -21,13 +21,13 @@ class TopTracksList extends Component {
 
 const mapStateToProps = state => {
     return {
-        tracks: state.tracks.tracks
+        tracks: state.tracks.topTracks
     };
 };
 
 const mapDispatchToProps = dispatch => {
     return {
-        fetchTopTracks: () => dispatch(fetchTopTracks())
+        fetchTopTracks: (count) => dispatch(fetchTopTracks(count))
     };
 };
 
