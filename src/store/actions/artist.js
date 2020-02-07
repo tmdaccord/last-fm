@@ -1,9 +1,9 @@
-import {GET_ARTIST_FAIL, GET_ARTIST_SUCCESS} from "./actionTypes";
+import {GET_ARTIST_FAIL, SET_ARTIST} from "./actionTypes";
 import * as api from "../../api/artists";
 
-export const getArtistSuccess = (artist) => {
+export const setArtist = (artist) => {
     return {
-        type: GET_ARTIST_SUCCESS,
+        type: SET_ARTIST,
         artist
     };
 };
@@ -30,7 +30,7 @@ export const getArtist = (name) => {
                     image: (responseArtist.image && responseArtist.image.length) ? responseArtist.image[0]['#text'] : null,
                     tags: responseArtist.tags.tag
                 };
-                dispatch(getArtistSuccess(artist));
+                dispatch(setArtist(artist));
             })
             .catch(error => {
                 dispatch(getArtistFail());

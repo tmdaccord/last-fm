@@ -34,11 +34,7 @@ class ArtistProfile extends Component {
             );
         }
 
-        return (
-            <React.Fragment>
-                {profile}
-            </React.Fragment>
-        );
+        return profile;
     }
 }
 

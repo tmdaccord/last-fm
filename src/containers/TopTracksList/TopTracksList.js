@@ -24,13 +24,14 @@ class TopTracksList extends Component {
         ));
 
         const loader = this.props.loading ? <Loader/> : null;
+        const moreButton = this.props.isMoreTracks ? <button onClick={this.onClickHandler}>Show More</button> : null;
 
         return (
             <React.Fragment>
                 <h2>Top Tracks</h2>
                 {tracksLists}
                 {loader}
-                <button onClick={this.onClickHandler}>Show More</button>
+                {moreButton}
             </React.Fragment>
         );
     }
@@ -40,13 +41,14 @@ const mapStateToProps = state => {
     return {
         tracks: state.tracks.topTracks,
         loading: state.tracks.loading,
+        isMoreTracks: state.tracks.isMoreTracks,
         error: state.tracks.error
     };
 };
 
 const mapDispatchToProps = dispatch => {
     return {
-        getTopTracks: (count, page) => dispatch(getTopTracks(count, page))
+        getTopTracks: (limit, page) => dispatch(getTopTracks(limit, page))
     };
 };
 

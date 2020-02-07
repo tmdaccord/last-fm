@@ -1,4 +1,4 @@
-import {GET_ARTIST_FAIL, GET_ARTIST_SUCCESS} from "../actions/actionTypes";
+import {GET_ARTIST_FAIL, SET_ARTIST} from "../actions/actionTypes";
 
 const initialState = {
     artistInfo: null,
@@ -7,7 +7,7 @@ const initialState = {
 
 const reducer = (state = initialState, action) => {
     switch (action.type) {
-        case GET_ARTIST_SUCCESS:
+        case SET_ARTIST:
             return {
                 artistInfo: action.artist,
                 error: false
