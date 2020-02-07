@@ -1,37 +1,37 @@
-import {FETCH_TOP_TRACKS_START, FETCH_TRACKS_FAIL, FETCH_TRACKS_SUCCESS} from "./actionTypes";
+import {GET_TOP_TRACKS_START, GET_TRACKS_FAIL, GET_TRACKS_SUCCESS} from "./actionTypes";
 import * as api from "../../api/tracks";
 
-export const fetchTopTracksStart = () => {
+export const getTopTracksStart = () => {
     return {
-        type: FETCH_TOP_TRACKS_START
+        type: GET_TOP_TRACKS_START
     };
 };
 
-export const fetchTracksSuccess = (tracks) => {
+export const getTracksSuccess = (tracks) => {
     return {
-        type: FETCH_TRACKS_SUCCESS,
+        type: GET_TRACKS_SUCCESS,
         tracks
     };
 };
 
-export const fetchTracksFail = (error) => {
+export const getTracksFail = (error) => {
     return {
-        type: FETCH_TRACKS_FAIL,
+        type: GET_TRACKS_FAIL,
         error: error
     };
 };
 
-export const fetchTopTracks = (count, page) => {
+export const getTopTracks = (count, page) => {
     return dispatch => {
-        dispatch(fetchTopTracksStart());
+        dispatch(getTopTracksStart());
         api.getTopTracks(count, page)
             .then(response => {
-                let fetchedTracks = [];
+                let tracks = [];
                 if (!response.data.tracks || !response.data.tracks.track || response.data.tracks.track.length === 0) {
-                    dispatch(fetchTracksFail());
+                    dispatch(getTracksFail());
                     return;
                 }
-                fetchedTracks = response.data.tracks.track.map(track => ({
+                tracks = response.data.tracks.track.map(track => ({
                     name: track.name,
                     imageUrl: (track.image && track.image.length) ? track.image[0]['#text'] : null,
                     artist: {
@@ -39,10 +39,10 @@ export const fetchTopTracks = (count, page) => {
                         url: track.artist.url,
                     },
                 }));
-                dispatch(fetchTracksSuccess(fetchedTracks));
+                dispatch(getTracksSuccess(tracks));
             })
             .catch(error => {
-                dispatch(fetchTracksFail());
+                dispatch(getTracksFail());
             });
     };
 };

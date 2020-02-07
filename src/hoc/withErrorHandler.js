@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import Error from "../components/Error/Error";
+import Error from "../components/UI/Error/Error";
 
 const withErrorHandler = (WrappedComponent, axios) => {
     return class extends Component {
