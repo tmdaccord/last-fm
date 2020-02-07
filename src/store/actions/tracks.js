@@ -1,6 +1,5 @@
-import axios from '../../axios-lastfm';
-
 import {FETCH_TOP_TRACKS_START, FETCH_TRACKS_FAIL, FETCH_TRACKS_SUCCESS} from "./actionTypes";
+import * as api from "../../api/tracks";
 
 export const fetchTopTracksStart = () => {
     return {
@@ -22,22 +21,15 @@ export const fetchTracksFail = (error) => {
     };
 };
 
-
-export const fetchTopTracks = (count) => {
+export const fetchTopTracks = (count, page) => {
     return dispatch => {
         dispatch(fetchTopTracksStart());
-        const params = {
-            method: 'chart.gettoptracks'
-        };
-        if (count && count > 0) {
-            params.limit = count;
-        }
-        axios.get('', {params})
+        api.getTopTracks(count, page)
             .then(response => {
-                console.log(response);
                 let fetchedTracks = [];
-                if (!response.data.tracks || !response.data.tracks.track) {
-                    dispatch(fetchTracksFail(new Error('There’s no tracks are available.')))
+                if (!response.data.tracks || !response.data.tracks.track || response.data.tracks.track.length === 0) {
+                    dispatch(fetchTracksFail());
+                    return;
                 }
                 fetchedTracks = response.data.tracks.track.map(track => ({
                     name: track.name,
@@ -50,7 +42,7 @@ export const fetchTopTracks = (count) => {
                 dispatch(fetchTracksSuccess(fetchedTracks));
             })
             .catch(error => {
-                dispatch(fetchTracksFail(error));
+                dispatch(fetchTracksFail());
             });
     };
 };

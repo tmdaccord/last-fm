@@ -3,6 +3,7 @@ import {FETCH_TOP_TRACKS_START, FETCH_TRACKS_FAIL, FETCH_TRACKS_SUCCESS} from ".
 const initialState = {
     topTracks: [],
     loading: false,
+    error: false
 };
 
 const reducer = (state = initialState, action) => {
@@ -13,14 +14,17 @@ const reducer = (state = initialState, action) => {
                 loading: true
             };
         case FETCH_TRACKS_SUCCESS:
+            const tracksCount = state.topTracks.reduce((sum, tracks) => sum + tracks.length, 0);
             return {
-                topTracks: action.tracks,
-                loading: false
+                topTracks: [...state.topTracks, action.tracks.slice(tracksCount)],
+                loading: false,
+                error: false
             };
         case FETCH_TRACKS_FAIL:
             return {
                 ...state,
-                loading: false
+                loading: false,
+                error: true
             };
         default:
             return state;
