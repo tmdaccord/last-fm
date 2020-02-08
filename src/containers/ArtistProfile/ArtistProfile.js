@@ -8,6 +8,7 @@ import Error from "../../components/UI/Error/Error";
 import Loader from "../../components/UI/Loader/Loader";
 import {getArtist} from "../../store/actions/artist";
 import artistImg from "../../assets/images/artist.png";
+import PropTypes from 'prop-types';
 
 class ArtistProfile extends Component {
     componentDidMount() {
@@ -54,6 +55,20 @@ const mapDispatchToProps = dispatch => {
     return {
         getArtistInfo: (name) => dispatch(getArtist(name))
     };
+};
+
+ArtistProfile.propTypes = {
+    artist: PropTypes.shape({
+        name: PropTypes.string.isRequired,
+        image: PropTypes.string.isRequired,
+        bio: PropTypes.string.isRequired,
+        tags: PropTypes.arrayOf(PropTypes.shape({
+            name: PropTypes.string.isRequired,
+            url: PropTypes.string.isRequired
+        })).isRequired
+    }),
+    loading: PropTypes.bool.isRequired,
+    error: PropTypes.bool.isRequired
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(withErrorHandler(ArtistProfile, axios));

@@ -2,6 +2,7 @@ import React from 'react';
 import classes from './Track.module.scss';
 import trackImg from '../../../assets/images/track.png';
 import {Link} from "react-router-dom";
+import PropTypes from 'prop-types';
 
 const Track = (props) => {
     const artistLink = props.artistUrl ? <a className={classes.Link} href={props.artistUrl}>last.fm</a> : null;
@@ -16,6 +17,13 @@ const Track = (props) => {
             </div>
         </div>
     );
+};
+
+Track.protTypes = {
+    name: PropTypes.string.isRequired,
+    imageUrl: PropTypes.string.isRequired,
+    artistName: PropTypes.string.isRequired,
+    artistUrl: PropTypes.string
 };
 
 export default Track;
