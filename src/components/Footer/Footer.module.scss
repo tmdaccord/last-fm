@@ -1,4 +1,9 @@
+@import "../../assets/styles/variables";
+
 .Footer {
-    background-color: #000000;
-    color: #ffffff;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    background-color: $contrast;
+    color: $default;
+    text-align: center;
 }

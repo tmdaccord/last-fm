@@ -6,11 +6,13 @@ import axios from '../../api/axios-lastfm';
 import Error from "../../components/UI/Error/Error";
 import Loader from "../../components/UI/Loader/Loader";
 import * as api from "../../api/tracks";
+import ShowMore from "../../components/TracksList/ShowMore/ShowMore";
 
 class Search extends Component {
     state = {
         query: '',
-        tracks: [],
+        tracksList: [],
+        pageNum: 1,
         loading: true,
         isMoreTracks: false,
         error: false
@@ -19,55 +21,60 @@ class Search extends Component {
     componentDidMount() {
         const params = new URLSearchParams(this.props.location.search);
         const searchQuery = params.get('q');
-        this.setState({
-            query: searchQuery
-        });
-        this.searchTracks(searchQuery, 15);
+        this.searchTracks(searchQuery);
     }
 
-    onClickHandler = () => {
+    componentDidUpdate(prevProps, prevState) {
+        if (prevProps.location.search !== this.props.location.search) {
+            const params = new URLSearchParams(this.props.location.search);
+            const searchQuery = params.get('q');
+            this.searchTracks(searchQuery);
+        }
+    }
+
+    handleClick = () => {
         this.setState({
             loading: true
         });
-        this.searchTracks(this.state.query, 15, this.state.tracks.length + 1);
+        this.searchTracks(this.state.query);
     };
 
-    searchTracks = (query, limit, page) => {
-        api.searchTracks(query, limit, page)
+    searchTracks = (query) => {
+        const isLoadMore = this.state.query === query;
+        api.searchTracks(query, 15, isLoadMore ? this.state.pageNum : 1)
             .then(response => {
                 if (!response.data.results || !response.data.results.trackmatches || !response.data.results.trackmatches.track) {
-                    this.setState({
-                        error: true,
-                        loading: false
-                    });
+                    this.searchError();
                     return;
                 }
                 let responseTracks = response.data.results.trackmatches.track;
                 if (!responseTracks.length) {
                     this.setState({
+                        query,
                         loading: false
                     });
                     return;
                 }
-                const tracksCount = this.state.tracks.reduce((sum, tracks) => sum + tracks.length, 0);
-                if (responseTracks.length > tracksCount) {
-                    responseTracks = responseTracks.slice(tracksCount);
+                if (isLoadMore) {
+                    const tracksCount = this.state.tracksList.length;
+                    if (responseTracks.length > tracksCount) {
+                        responseTracks = responseTracks.slice(tracksCount);
+                    }
                 }
                 const tracks = this.transformResponseTracks(responseTracks);
+                const tracksList = isLoadMore ? [...this.state.tracksList, ...tracks] : tracks;
                 const totalResults = parseInt(response.data.results['opensearch:totalResults']);
                 const loadedResults = parseInt(response.data.results['opensearch:startIndex']) + parseInt(response.data.results['opensearch:itemsPerPage']);
                 this.setState(state => ({
-                    tracks: [...state.tracks, tracks],
+                    query,
+                    tracksList,
                     loading: false,
                     isMoreTracks: totalResults > loadedResults,
                     error: false
                 }));
             })
             .catch(error => {
-                this.setState({
-                    error: true,
-                    loading: false
-                });
+                this.searchError();
             });
     };
 
@@ -81,23 +88,27 @@ class Search extends Component {
         }));
     };
 
-    render() {
-        let tracksLists = this.state.loading ? null : <p>No tracks found.</p>;
+    searchError = () => {
+        this.setState({
+            error: true,
+            loading: false
+        });
+    };
 
-        if (this.state.tracks.length) {
-            tracksLists = this.state.tracks.map((tracksList, index) => (
-                (this.state.error && !tracksList.length) ? <Error message='Something wrong.'/> :
-                    <TracksList key={index} tracks={tracksList}/>
-            ));
+    render() {
+        let title = this.state.loading ? null : <h2 className="page-title">Search results for: '{this.state.query}'</h2>;
+        let tracksList = this.state.loading ? null : <p>No tracks found.</p>;
+        if (this.state.tracksList.length) {
+            tracksList = (this.state.error && !tracksList.length) ? <Error message='Something wrong.'/> : <TracksList tracks={this.state.tracksList}/>;
         }
 
         const loader = this.state.loading ? <Loader/> : null;
-        const moreButton = this.state.isMoreTracks ? <button onClick={this.onClickHandler}>Show More</button> : null;
+        const moreButton = this.state.isMoreTracks ? <ShowMore onClick={this.handleClick} /> : null;
 
         return (
             <React.Fragment>
-                <h2>Search results for: '{this.state.query}'</h2>
-                {tracksLists}
+                {title}
+                {tracksList}
                 {loader}
                 {moreButton}
             </React.Fragment>

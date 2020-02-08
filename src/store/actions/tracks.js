@@ -32,7 +32,7 @@ export const getTopTracks = (limit, page) => {
                     return;
                 }
                 let responseTracks = response.data.tracks.track;
-                const tracksCount = getState().tracks.topTracks.reduce((sum, tracks) => sum + tracks.length, 0);
+                const tracksCount = getState().tracks.topTracks.length;
                 if (responseTracks.length > tracksCount) {
                     responseTracks = responseTracks.slice(tracksCount);
                 }
@@ -41,7 +41,7 @@ export const getTopTracks = (limit, page) => {
                 }
                 const tracks = responseTracks.map(track => ({
                     name: track.name,
-                    imageUrl: (track.image && track.image.length) ? track.image[0]['#text'] : null,
+                    imageUrl: (track.image && track.image.length) ? track.image.filter(image => (image.size === 'medium'))[0]['#text'] : null,
                     artist: {
                         name: track.artist.name,
                         url: track.artist.url,

@@ -16,7 +16,7 @@ const reducer = (state = initialState, action) => {
             };
         case ADD_TOP_TRACKS:
             return {
-                topTracks: [...state.topTracks, action.tracks],
+                topTracks: [...state.topTracks, ...action.tracks],
                 loading: false,
                 isMoreTracks: action.isMoreTracks,
                 error: false

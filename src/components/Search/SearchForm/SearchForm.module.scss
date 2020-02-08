@@ -1,3 +1,37 @@
-.SearchForm {
+@import "../../../assets/styles/variables";
 
+.SearchForm {
+    position: relative;
+    flex-basis: 70%;
+    max-width: 400px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+    input {
+        width: 100%;
+        padding-right: 50px;
+        background-color: lighten(saturate(adjust_hue($contrast, 0), 0%), 17%);
+        color:$default;
+    }
+
+    svg {
+        vertical-align: middle;
+        transition: 0.3s stroke ease;
+    }
+
+    button {
+        display: block;
+        position: absolute;
+        top: 0;
+        right: 0;
+        height: 100%;
+        padding: 0 10px;
+        text-align: center;
+
+        &:hover {
+            svg {
+                stroke: $primary;
+            }
+        }
+    }
 }

@@ -1,0 +1,6 @@
+@import "../../assets/styles/variables";
+
+.MainColumn {
+    padding: 40px 30px;
+    background-color: lighten(saturate(adjust_hue($contrast, 0), 0%), 15%);
+}

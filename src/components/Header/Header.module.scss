@@ -1,13 +1,19 @@
 @import "../../assets/styles/variables";
 
 .Header {
-    padding-top: 20px;
-    padding-bottom: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
     background-color: $contrast;
     color: $default;
 }
 
 .HeaderContainer {
     display: flex;
+    align-items: center;
     justify-content: space-between;
+    flex-direction: column;
+
+    @media (min-width: $screen-xs-min) {
+        flex-direction: row;
+    }
 }

@@ -22,76 +22,76 @@ article, aside, canvas, details, embed,
 figure, figcaption, footer, header, hgroup,
 menu, nav, output, ruby, section, summary,
 time, mark, audio, video, button, input, textarea {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  font: inherit;
-  vertical-align: top;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font: inherit;
+    vertical-align: top;
 }
 
 article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, main, time, section {
-  display: block;
+    display: block;
 }
 
 ol, ul {
-  list-style: none;
+    list-style: none;
 }
 
 blockquote, q {
-  quotes: none;
+    quotes: none;
 }
 
 blockquote:before, blockquote:after,
 q:before, q:after {
-  content: '';
+    content: '';
 }
 
 table {
-  border-collapse: collapse;
-  border-spacing: 0;
+    border-collapse: collapse;
+    border-spacing: 0;
 }
 
 button, input, textarea, select {
-  display: inline-block;
-  -webkit-appearance: none;
-  outline: none;
-  color: inherit;
-  overflow: visible;
-  background-color: rgba(#000, 0);
-  box-shadow: none;
-  border-radius: 0;
+    display: inline-block;
+    -webkit-appearance: none;
+    outline: none;
+    color: inherit;
+    overflow: visible;
+    background-color: rgba(#000, 0);
+    box-shadow: none;
+    border-radius: 0;
 }
 
 button,
 input[type='button'],
 input[type='submit'] {
-  cursor: pointer;
+    cursor: pointer;
 }
 
 *,
 *:before,
 *:after {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 a,
 a[href^="tel:"],
 a[href^="callto:"] {
-  font: inherit;
-  color: inherit;
-  text-decoration: none;
+    font: inherit;
+    color: inherit;
+    text-decoration: none;
 
-  &:focus {
-    outline: none;
-  }
+    &:focus {
+        outline: none;
+    }
 }
 
 img {
-  max-width: 100%;
-  height: auto;
+    max-width: 100%;
+    height: auto;
 }
 
 a, button, input {
-  transition: .3s all ease;
+    transition: .3s all ease;
 }

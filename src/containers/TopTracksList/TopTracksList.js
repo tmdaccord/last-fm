@@ -7,29 +7,34 @@ import withErrorHandler from "../../hoc/withErrorHandler";
 import axios from '../../api/axios-lastfm';
 import Error from "../../components/UI/Error/Error";
 import Loader from "../../components/UI/Loader/Loader";
+import ShowMore from "../../components/TracksList/ShowMore/ShowMore";
 
 class TopTracksList extends Component {
+    state = {
+        pageNum: 1
+    };
+
     componentDidMount() {
         this.props.getTopTracks(5);
     }
 
-    onClickHandler = () => {
-        this.props.getTopTracks(15, this.props.tracks.length);
+    handleClick = () => {
+        this.props.getTopTracks(15, this.state.pageNum);
+        this.setState(state => ({
+            pageNum: state.pageNum + 1
+        }));
     };
 
     render() {
-        let tracksLists = this.props.tracks.map((tracksList, index) => (
-            (this.props.error && !tracksList.length) ? <Error message='Something wrong.'/> :
-                <TracksList key={index} tracks={tracksList}/>
-        ));
-
+        const tracksList = (this.props.error && !this.props.tracksList.length) ? <Error message='Something wrong.'/> :
+            <TracksList tracks={this.props.tracksList}/>;
         const loader = this.props.loading ? <Loader/> : null;
-        const moreButton = this.props.isMoreTracks ? <button onClick={this.onClickHandler}>Show More</button> : null;
+        const moreButton = this.props.isMoreTracks ? <ShowMore onClick={this.handleClick} /> : null;
 
         return (
             <React.Fragment>
-                <h2>Top Tracks</h2>
-                {tracksLists}
+                <h2 className="page-title">Top Tracks</h2>
+                {tracksList}
                 {loader}
                 {moreButton}
             </React.Fragment>
@@ -39,7 +44,7 @@ class TopTracksList extends Component {
 
 const mapStateToProps = state => {
     return {
-        tracks: state.tracks.topTracks,
+        tracksList: state.tracks.topTracks,
         loading: state.tracks.loading,
         isMoreTracks: state.tracks.isMoreTracks,
         error: state.tracks.error

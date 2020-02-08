@@ -3,137 +3,149 @@
 @import "assets/styles/grid";
 
 body {
-  font-family: $default-font-family;
-  font-weight: $default-font-weight;
-  font-size: 16px;
-  line-height: 1.7;
-  -webkit-text-size-adjust: none;
-  color: $content-color;
-  background: $content-bg;
+    font-family: $default-font-family;
+    font-weight: $default-font-weight;
+    font-size: 16px;
+    line-height: 1.7;
+    -webkit-text-size-adjust: none;
+    color: $content-color;
+    background: $content-bg;
 
-  @media (min-width: $screen-md-min) {
-    font-size: $default-font-size;
-    line-height: $default-line-height;
-  }
+    @media (min-width: $screen-md-min) {
+        font-size: $default-font-size;
+        line-height: $default-line-height;
+    }
 }
 
 #root {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 main {
-  flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    > div {
+        flex-grow: 1;
+        width: 100%;
+    }
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  display: block;
-  color: $dark;
-  font-weight: 400;
+    display: block;
+    color: darken(saturate(adjust_hue($default, 0), 0%), 40%);
+    font-weight: 400;
 
-  a:hover {
-    color: $primary;
-  }
+    a:hover {
+        color: $primary;
+    }
 }
 
 h1 {
-  font-size: 38px;
-  line-height: 1.33;
+    font-size: 36px;
+    line-height: 1.33;
 
-  @media (min-width: $screen-sm-min) {
-    font-size: 62px;
-    line-height: 1.16;
-  }
+    @media (min-width: $screen-sm-min) {
+        font-size: 40px;
+        line-height: 1.16;
+    }
 }
 
 h2 {
-  font-size: 34px;
-  font-weight: 700;
-  line-height: 1.4;
-  letter-spacing: 0.02em;
+    font-size: 32px;
+    font-weight: 400;
+    line-height: 1.4;
+    letter-spacing: 0.02em;
 
-  @media (min-width: $screen-sm-min) {
-    font-size: 50px;
-    line-height: (75 / 50);
-  }
+    @media (min-width: $screen-sm-min) {
+        font-size: 36px;
+        line-height: (75 / 50);
+    }
 }
 
 h3 {
-  font-size: 30px;
-  line-height: 1.5;
+    font-size: 28px;
+    line-height: 1.5;
 
-  @media (min-width: $screen-sm-min) {
-    font-size: 44px;
-    line-height: 1.37;
-  }
+    @media (min-width: $screen-sm-min) {
+        font-size: 32px;
+        line-height: 1.37;
+    }
 }
 
 h4 {
-  font-size: 26px;
-  font-weight: 700;
-  letter-spacing: 0.02em;
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: 0.02em;
 
-  @media (min-width: $screen-sm-min) {
-    font-size: 34px;
-    line-height: 1.47;
-  }
+    @media (min-width: $screen-sm-min) {
+        font-size: 28px;
+        line-height: 1.47;
+    }
 }
 
 h5 {
-  font-size: 18px;
-  font-weight: 700;
-  text-transform: uppercase;
+    font-size: 16px;
+    line-height: 1.3;
+    font-weight: 700;
 }
 
 h6 {
-  font-size: 16px;
-  font-weight: 700;
-  text-transform: uppercase;
+    font-size: 12px;
+    font-weight: 400;
+    text-transform: uppercase;
 }
 
 p {
-  a:hover {
-    color: $primary;
-  }
+    a:hover {
+        color: $primary;
+    }
 }
 
 strong {
-  color: $dark;
+    color: $dark;
 }
 
 mark {
-  display: inline-block;
-  padding: 5px;
-  color: #FFF;
-  background: $primary;
+    display: inline-block;
+    padding: 5px;
+    color: #FFF;
+    background: $primary;
 }
 
 em {
-  color: $primary;
+    color: $primary;
 }
 
 small {
-  display: block;
-  font-size: 0.875em;
-  line-height: 1.643em;
+    display: block;
+    font-size: 0.875em;
+    line-height: 1.643em;
 }
 
 .big {
-  font-size: 1.2em;
+    font-size: 1.2em;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-  monospace;
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
 }
 
 input {
-  background-color: #ffffff;
-  color: #000;
-  border: 1px solid #cccccc;
+    padding: 10px 18px;
+    background-color: $default;
+    color: $contrast;
+}
+
+.page-title {
+    text-align: center;
+    margin-bottom: 40px;
+    color: $default;
 }

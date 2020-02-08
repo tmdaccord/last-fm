@@ -4,13 +4,14 @@ import trackImg from '../../../assets/images/track.png';
 import {Link} from "react-router-dom";
 
 const Track = (props) => {
-    const artist = props.artistUrl ? <a href={props.artistUrl}>Artist Link</a> : null;
+    const artistLink = props.artistUrl ? <a className={classes.Link} href={props.artistUrl}>last.fm</a> : null;
     return (
         <div className={classes.Track}>
-            <h4>{props.name}</h4>
-            <h5><Link to={`/artist/${props.artistName}`}>{props.artistName}</Link></h5>
-            {artist}
-            <img src={props.imageUrl ? props.imageUrl : trackImg} alt=""/>
+            <img src={props.imageUrl ? props.imageUrl : trackImg} alt={props.name}/>
+            <div>
+                <h5>{props.name}</h5>
+                <h6><Link to={`/artist/${props.artistName}`}>{props.artistName}</Link> {artistLink}</h6>
+            </div>
         </div>
     );
 };

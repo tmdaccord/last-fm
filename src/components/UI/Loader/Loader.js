@@ -3,10 +3,17 @@ import React from 'react';
 import classes from './Loader.module.scss';
 
 const Loader = () => (
-    <div className={classes.Loader}>
-        <div className="circle-1"></div>
-        <div className="circle-2"></div>
-        <div className="circle-3"></div>
+    <div>
+        <div className={classes.Loader}>
+            <div className={classes.FloatBarsG_1} />
+            <div className={classes.FloatBarsG_2} />
+            <div className={classes.FloatBarsG_3} />
+            <div className={classes.FloatBarsG_4} />
+            <div className={classes.FloatBarsG_5} />
+            <div className={classes.FloatBarsG_6} />
+            <div className={classes.FloatBarsG_7} />
+            <div className={classes.FloatBarsG_8} />
+        </div>
     </div>
 );
 

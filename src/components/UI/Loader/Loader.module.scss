@@ -1,122 +1,172 @@
 .Loader {
-    width: 146px;
+    position: relative;
+    width: 234px;
+    height: 28px;
     margin: auto;
-}
 
-.Loader div {
-    background-color: rgb(255, 255, 255);
-    float: left;
-    height: 31px;
-    margin-left: 17px;
-    width: 31px;
-    animation-name: bounce_circleG;
-    -o-animation-name: bounce_circleG;
-    -ms-animation-name: bounce_circleG;
-    -webkit-animation-name: bounce_circleG;
-    -moz-animation-name: bounce_circleG;
-    animation-duration: 1.0675s;
-    -o-animation-duration: 1.0675s;
-    -ms-animation-duration: 1.0675s;
-    -webkit-animation-duration: 1.0675s;
-    -moz-animation-duration: 1.0675s;
-    animation-iteration-count: infinite;
-    -o-animation-iteration-count: infinite;
-    -ms-animation-iteration-count: infinite;
-    -webkit-animation-iteration-count: infinite;
-    -moz-animation-iteration-count: infinite;
-    animation-direction: normal;
-    -o-animation-direction: normal;
-    -ms-animation-direction: normal;
-    -webkit-animation-direction: normal;
-    -moz-animation-direction: normal;
-    border-radius: 20px;
-    -o-border-radius: 20px;
-    -ms-border-radius: 20px;
-    -webkit-border-radius: 20px;
-    -moz-border-radius: 20px;
-}
-
-.Loader circle-1 {
-    animation-delay: 0.2095s;
-    -o-animation-delay: 0.2095s;
-    -ms-animation-delay: 0.2095s;
-    -webkit-animation-delay: 0.2095s;
-    -moz-animation-delay: 0.2095s;
-}
-
-.Loader circle-2 {
-    animation-delay: 0.4955s;
-    -o-animation-delay: 0.4955s;
-    -ms-animation-delay: 0.4955s;
-    -webkit-animation-delay: 0.4955s;
-    -moz-animation-delay: 0.4955s;
-}
-
-.Loader circle-3 {
-    animation-delay: 0.6385s;
-    -o-animation-delay: 0.6385s;
-    -ms-animation-delay: 0.6385s;
-    -webkit-animation-delay: 0.6385s;
-    -moz-animation-delay: 0.6385s;
-}
-
-
-@keyframes bounce_circleG {
-    0% {
+    div {
+        position: absolute;
+        top: 0;
+        background-color: rgb(221, 221, 221);
+        width: 28px;
+        height: 28px;
+        animation-name: bounce_floatBarsG;
+        -o-animation-name: bounce_floatBarsG;
+        -ms-animation-name: bounce_floatBarsG;
+        -webkit-animation-name: bounce_floatBarsG;
+        -moz-animation-name: bounce_floatBarsG;
+        animation-duration: 0.645s;
+        -o-animation-duration: 0.645s;
+        -ms-animation-duration: 0.645s;
+        -webkit-animation-duration: 0.645s;
+        -moz-animation-duration: 0.645s;
+        animation-iteration-count: infinite;
+        -o-animation-iteration-count: infinite;
+        -ms-animation-iteration-count: infinite;
+        -webkit-animation-iteration-count: infinite;
+        -moz-animation-iteration-count: infinite;
+        animation-direction: normal;
+        -o-animation-direction: normal;
+        -ms-animation-direction: normal;
+        -webkit-animation-direction: normal;
+        -moz-animation-direction: normal;
+        transform: scale(.3);
+        -o-transform: scale(.3);
+        -ms-transform: scale(.3);
+        -webkit-transform: scale(.3);
+        -moz-transform: scale(.3);
     }
+}
 
-    50% {
-        background-color: rgb(0, 0, 0);
+.FloatBarsG_1 {
+    left: 0;
+    animation-delay: 0.256s;
+    -o-animation-delay: 0.256s;
+    -ms-animation-delay: 0.256s;
+    -webkit-animation-delay: 0.256s;
+    -moz-animation-delay: 0.256s;
+}
+
+.FloatBarsG_2 {
+    left: 29px;
+    animation-delay: 0.3225s;
+    -o-animation-delay: 0.3225s;
+    -ms-animation-delay: 0.3225s;
+    -webkit-animation-delay: 0.3225s;
+    -moz-animation-delay: 0.3225s;
+}
+
+.FloatBarsG_3 {
+    left: 58px;
+    animation-delay: 0.389s;
+    -o-animation-delay: 0.389s;
+    -ms-animation-delay: 0.389s;
+    -webkit-animation-delay: 0.389s;
+    -moz-animation-delay: 0.389s;
+}
+
+.FloatBarsG_4 {
+    left: 88px;
+    animation-delay: 0.4555s;
+    -o-animation-delay: 0.4555s;
+    -ms-animation-delay: 0.4555s;
+    -webkit-animation-delay: 0.4555s;
+    -moz-animation-delay: 0.4555s;
+}
+
+.FloatBarsG_5 {
+    left: 117px;
+    animation-delay: 0.522s;
+    -o-animation-delay: 0.522s;
+    -ms-animation-delay: 0.522s;
+    -webkit-animation-delay: 0.522s;
+    -moz-animation-delay: 0.522s;
+}
+
+.FloatBarsG_6 {
+    left: 146px;
+    animation-delay: 0.5885s;
+    -o-animation-delay: 0.5885s;
+    -ms-animation-delay: 0.5885s;
+    -webkit-animation-delay: 0.5885s;
+    -moz-animation-delay: 0.5885s;
+}
+
+.FloatBarsG_7 {
+    left: 175px;
+    animation-delay: 0.645s;
+    -o-animation-delay: 0.645s;
+    -ms-animation-delay: 0.645s;
+    -webkit-animation-delay: 0.645s;
+    -moz-animation-delay: 0.645s;
+}
+
+.FloatBarsG_8 {
+    left: 205px;
+    animation-delay: 0.7115s;
+    -o-animation-delay: 0.7115s;
+    -ms-animation-delay: 0.7115s;
+    -webkit-animation-delay: 0.7115s;
+    -moz-animation-delay: 0.7115s;
+}
+
+
+@keyframes bounce_floatBarsG {
+    0% {
+        transform: scale(1);
+        background-color: rgb(221, 221, 221);
     }
 
     100% {
+        transform: scale(.3);
+        background-color: rgb(0, 0, 0);
     }
 }
 
-@-o-keyframes bounce_circleG {
+@-o-keyframes bounce_floatBarsG {
     0% {
-    }
-
-    50% {
-        background-color: rgb(0, 0, 0);
+        -o-transform: scale(1);
+        background-color: rgb(221, 221, 221);
     }
 
     100% {
+        -o-transform: scale(.3);
+        background-color: rgb(0, 0, 0);
     }
 }
 
-@-ms-keyframes bounce_circleG {
+@-ms-keyframes bounce_floatBarsG {
     0% {
-    }
-
-    50% {
-        background-color: rgb(0, 0, 0);
+        -ms-transform: scale(1);
+        background-color: rgb(221, 221, 221);
     }
 
     100% {
+        -ms-transform: scale(.3);
+        background-color: rgb(0, 0, 0);
     }
 }
 
-@-webkit-keyframes bounce_circleG {
+@-webkit-keyframes bounce_floatBarsG {
     0% {
-    }
-
-    50% {
-        background-color: rgb(0, 0, 0);
+        -webkit-transform: scale(1);
+        background-color: rgb(221, 221, 221);
     }
 
     100% {
+        -webkit-transform: scale(.3);
+        background-color: rgb(0, 0, 0);
     }
 }
 
-@-moz-keyframes bounce_circleG {
+@-moz-keyframes bounce_floatBarsG {
     0% {
-    }
-
-    50% {
-        background-color: rgb(0, 0, 0);
+        -moz-transform: scale(1);
+        background-color: rgb(221, 221, 221);
     }
 
     100% {
+        -moz-transform: scale(.3);
+        background-color: rgb(0, 0, 0);
     }
 }

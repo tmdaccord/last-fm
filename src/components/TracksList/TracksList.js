@@ -3,8 +3,8 @@ import classes from './TracksList.module.scss';
 import Track from "./Track/Track";
 
 const TracksList = (props) => {
-    const tracksList = props.tracks.map(track => (
-        <li key={track.artist.name + track.name}>
+    const tracksList = props.tracks.map((track, index) => (
+        <li key={track.name + index}>
             <Track
                 name={track.name}
                 imageUrl={track.imageUrl}

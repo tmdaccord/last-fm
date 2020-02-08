@@ -1,0 +1,17 @@
+@import "../../../assets/styles/variables";
+
+.ShowMore {
+    text-align: center;
+
+    button {
+        display: inline-block;
+        font-size: 16px;
+        line-height: 1.5;
+        color: $primary;
+        text-decoration: underline;
+
+        &:hover {
+            color: $default;
+        }
+    }
+}
