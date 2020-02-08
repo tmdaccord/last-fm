@@ -31,15 +31,15 @@ export const getTopTracks = (limit, page) => {
                     dispatch(getTracksFail());
                     return;
                 }
-                let tracks = response.data.tracks.track;
+                let responseTracks = response.data.tracks.track;
                 const tracksCount = getState().tracks.topTracks.reduce((sum, tracks) => sum + tracks.length, 0);
-                if (tracks.length > tracksCount) {
-                    tracks = tracks.slice(tracksCount);
+                if (responseTracks.length > tracksCount) {
+                    responseTracks = responseTracks.slice(tracksCount);
                 }
-                if (tracks.length > limit && tracks.length < tracksCount) {
-                    tracks = tracks.slice(limit);
+                if (responseTracks.length > limit && responseTracks.length < tracksCount) {
+                    responseTracks = responseTracks.slice(limit);
                 }
-                tracks = tracks.map(track => ({
+                const tracks = responseTracks.map(track => ({
                     name: track.name,
                     imageUrl: (track.image && track.image.length) ? track.image[0]['#text'] : null,
                     artist: {

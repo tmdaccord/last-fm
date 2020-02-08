@@ -1,5 +1,5 @@
 import React from 'react';
-import classes from './Track.module.css';
+import classes from './Track.module.scss';
 import trackImg from '../../../assets/images/track.png';
 import {Link} from "react-router-dom";
 

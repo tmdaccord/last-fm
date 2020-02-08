@@ -1,5 +1,5 @@
 import React from 'react';
-import classes from './TracksList.module.css';
+import classes from './TracksList.module.scss';
 import Track from "./Track/Track";
 
 const TracksList = (props) => {

@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 
 import withErrorHandler from "../../hoc/withErrorHandler";
 import axios from '../../api/axios-lastfm';
-import classes from './ArtistProfile.module.css';
+import classes from './ArtistProfile.module.scss';
 import Error from "../../components/UI/Error/Error";
 import Loader from "../../components/UI/Loader/Loader";
 import {getArtist} from "../../store/actions/artist";

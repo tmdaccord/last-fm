@@ -1,0 +1,30 @@
+//========================================================
+//                     Variables
+//=========================================================
+
+// Resolutions
+$screen-xs-min: 480px;
+$screen-sm-min: 768px;
+$screen-md-min: 992px;
+$screen-lg-min: 1200px;
+$screen-xl-min: 1500px;
+
+
+// Fonts
+$default-font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+sans-serif;
+$default-font-weight: 400;
+$default-font-size: 16px;
+$default-line-height: 1.4;
+
+
+// Anchor Colors
+$default: #fff;
+$contrast: #000;
+$white: #fff;
+$primary: #b90000;
+$dark: lighten(saturate(adjust_hue($contrast, 0), 0%), 20%);
+
+$content-color: $default;
+$content-bg: lighten(saturate(adjust_hue($contrast, 0), 0%), 20%);

@@ -1,5 +1,5 @@
 import React from 'react';
-import classes from './Header.module.css';
+import classes from './Header.module.scss';
 import Logo from "../Logo/Logo";
 import SearchForm from "../Search/SearchForm/SearchForm";
 

@@ -1,0 +1,139 @@
+@import "assets/styles/normalize";
+@import "assets/styles/variables";
+@import "assets/styles/grid";
+
+body {
+  font-family: $default-font-family;
+  font-weight: $default-font-weight;
+  font-size: 16px;
+  line-height: 1.7;
+  -webkit-text-size-adjust: none;
+  color: $content-color;
+  background: $content-bg;
+
+  @media (min-width: $screen-md-min) {
+    font-size: $default-font-size;
+    line-height: $default-line-height;
+  }
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex-grow: 1;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  display: block;
+  color: $dark;
+  font-weight: 400;
+
+  a:hover {
+    color: $primary;
+  }
+}
+
+h1 {
+  font-size: 38px;
+  line-height: 1.33;
+
+  @media (min-width: $screen-sm-min) {
+    font-size: 62px;
+    line-height: 1.16;
+  }
+}
+
+h2 {
+  font-size: 34px;
+  font-weight: 700;
+  line-height: 1.4;
+  letter-spacing: 0.02em;
+
+  @media (min-width: $screen-sm-min) {
+    font-size: 50px;
+    line-height: (75 / 50);
+  }
+}
+
+h3 {
+  font-size: 30px;
+  line-height: 1.5;
+
+  @media (min-width: $screen-sm-min) {
+    font-size: 44px;
+    line-height: 1.37;
+  }
+}
+
+h4 {
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+
+  @media (min-width: $screen-sm-min) {
+    font-size: 34px;
+    line-height: 1.47;
+  }
+}
+
+h5 {
+  font-size: 18px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+h6 {
+  font-size: 16px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+p {
+  a:hover {
+    color: $primary;
+  }
+}
+
+strong {
+  color: $dark;
+}
+
+mark {
+  display: inline-block;
+  padding: 5px;
+  color: #FFF;
+  background: $primary;
+}
+
+em {
+  color: $primary;
+}
+
+small {
+  display: block;
+  font-size: 0.875em;
+  line-height: 1.643em;
+}
+
+.big {
+  font-size: 1.2em;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  monospace;
+}
+
+input {
+  background-color: #ffffff;
+  color: #000;
+  border: 1px solid #cccccc;
+}
