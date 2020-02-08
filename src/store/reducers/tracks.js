@@ -3,7 +3,7 @@ import {GET_TOP_TRACKS_START, GET_TRACKS_FAIL, ADD_TOP_TRACKS} from "../actions/
 const initialState = {
     topTracks: [],
     loading: false,
-    isMoreTracks: true,
+    isMoreTracks: false,
     error: false
 };
 

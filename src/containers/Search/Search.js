@@ -48,13 +48,6 @@ class Search extends Component {
                     return;
                 }
                 let responseTracks = response.data.results.trackmatches.track;
-                if (!responseTracks.length) {
-                    this.setState({
-                        query,
-                        loading: false
-                    });
-                    return;
-                }
                 if (isLoadMore) {
                     const tracksCount = this.state.tracksList.length;
                     if (responseTracks.length > tracksCount) {
@@ -65,15 +58,15 @@ class Search extends Component {
                 const tracksList = isLoadMore ? [...this.state.tracksList, ...tracks] : tracks;
                 const totalResults = parseInt(response.data.results['opensearch:totalResults']);
                 const loadedResults = parseInt(response.data.results['opensearch:startIndex']) + parseInt(response.data.results['opensearch:itemsPerPage']);
-                this.setState(state => ({
+                this.setState({
                     query,
                     tracksList,
                     loading: false,
                     isMoreTracks: totalResults > loadedResults,
                     error: false
-                }));
+                });
             })
-            .catch(error => {
+            .catch(() => {
                 this.searchError();
             });
     };
@@ -97,9 +90,11 @@ class Search extends Component {
 
     render() {
         let title = this.state.loading ? null : <h2 className="page-title">Search results for: '{this.state.query}'</h2>;
-        let tracksList = this.state.loading ? null : <p>No tracks found.</p>;
+        let tracksList;
         if (this.state.tracksList.length) {
-            tracksList = (this.state.error && !tracksList.length) ? <Error message='Something wrong.'/> : <TracksList tracks={this.state.tracksList}/>;
+            tracksList = this.state.error ? <Error message='Something wrong.'/> : <TracksList tracks={this.state.tracksList}/>;
+        } else {
+            tracksList = <p className="text-center">No tracks found.</p>;
         }
 
         const loader = this.state.loading ? <Loader/> : null;

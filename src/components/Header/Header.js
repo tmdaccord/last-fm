@@ -1,7 +1,7 @@
 import React from 'react';
 import classes from './Header.module.scss';
 import Logo from "../Logo/Logo";
-import SearchForm from "../Search/SearchForm/SearchForm";
+import SearchForm from "../SearchForm/SearchForm";
 
 const Header = () => (
     <header className={classes.Header}>

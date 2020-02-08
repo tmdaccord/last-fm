@@ -27,6 +27,7 @@ main {
     display: flex;
     flex-direction: column;
     flex-grow: 1;
+
     > div {
         flex-grow: 1;
         width: 100%;
@@ -148,4 +149,8 @@ input {
     text-align: center;
     margin-bottom: 40px;
     color: $default;
+}
+
+.text-center {
+    text-align: center;
 }

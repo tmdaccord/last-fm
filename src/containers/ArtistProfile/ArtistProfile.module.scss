@@ -1,7 +1,41 @@
-.ArtistProfile {
+@import "../../assets/styles/variables";
 
+.ArtistProfile {
+    h3 {
+        color: $default;
+        margin-bottom: 20px;
+    }
+}
+
+.Bio {
+    margin-bottom: 30px;
+
+    a {
+        color: $default;
+        &:hover {
+            color: $primary;
+        }
+    }
 }
 
 .TagsList {
+    margin-top: 20px;
 
+    li {
+        display: inline-block;
+        margin-right: 10px;
+        margin-bottom: 10px;
+    }
+
+    a {
+        display: block;
+        padding: 4px 6px;
+        border-radius: 3px;
+        background-color: lighten(saturate(adjust_hue($contrast, 0), 0%), 70%);
+        color: $primary;
+
+        &:hover {
+            background-color: lighten(saturate(adjust_hue($contrast, 0), 0%), 80%);
+        }
+    }
 }

@@ -1,8 +1,8 @@
 import React from 'react';
 import classes from './PageNotFound.module.scss';
 
-const PageNotFound = (props) => (
-    <div className={classes.PageNotFound}>PageNotFound</div>
+const PageNotFound = () => (
+    <h2 className={classes.PageNotFound}>Page Not Found</h2>
 );
 
 export default PageNotFound;
