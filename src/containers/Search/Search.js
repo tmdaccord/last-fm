@@ -48,21 +48,16 @@ class Search extends Component {
                     return;
                 }
                 let responseTracks = response.data.results.trackmatches.track;
-                if (isLoadMore) {
-                    const tracksCount = this.state.tracksList.length;
-                    if (responseTracks.length > tracksCount) {
-                        responseTracks = responseTracks.slice(tracksCount);
-                    }
+                if (isLoadMore && responseTracks.length > this.state.tracksList.length) {
+                    responseTracks = responseTracks.slice(this.state.tracksList.length);
                 }
                 const tracks = this.transformResponseTracks(responseTracks);
                 const tracksList = isLoadMore ? [...this.state.tracksList, ...tracks] : tracks;
-                const totalResults = parseInt(response.data.results['opensearch:totalResults']);
-                const loadedResults = parseInt(response.data.results['opensearch:startIndex']) + parseInt(response.data.results['opensearch:itemsPerPage']);
                 this.setState({
                     query,
                     tracksList,
                     loading: false,
-                    isMoreTracks: totalResults > loadedResults,
+                    isMoreTracks: this.isMoreTracks(response),
                     error: false
                 });
             })
@@ -79,6 +74,16 @@ class Search extends Component {
                 name: track.artist
             },
         }));
+    };
+
+    isMoreTracks = (response) => {
+        const totalResults = parseInt(response.data.results['opensearch:totalResults']);
+        const loadedResults = parseInt(response.data.results['opensearch:startIndex']) + parseInt(response.data.results['opensearch:itemsPerPage']);
+        return totalResults > loadedResults;
+    };
+
+    isResponseValid = (response) => {
+        return response.data.tracks && response.data.tracks.track && response.data.tracks.track.length;
     };
 
     searchError = () => {

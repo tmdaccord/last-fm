@@ -1,5 +1,6 @@
 export const GET_TOP_TRACKS_START = 'GET_TOP_TRACKS';
 export const GET_TRACKS_FAIL = 'GET_TRACKS_FAIL';
+export const SET_TOP_TRACKS = 'SET_TOP_TRACKS';
 export const ADD_TOP_TRACKS = 'ADD_TOP_TRACKS';
 
 export const GET_ARTIST_START = 'GET_ARTIST_START';

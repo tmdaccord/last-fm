@@ -1,4 +1,4 @@
-import {GET_TOP_TRACKS_START, GET_TRACKS_FAIL, ADD_TOP_TRACKS} from "../actions/actionTypes";
+import {GET_TOP_TRACKS_START, GET_TRACKS_FAIL, ADD_TOP_TRACKS, SET_TOP_TRACKS} from "../actions/actionTypes";
 
 const initialState = {
     topTracks: [],
@@ -13,6 +13,13 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 loading: true
+            };
+        case SET_TOP_TRACKS:
+            return {
+                topTracks: action.tracks,
+                loading: false,
+                isMoreTracks: action.isMoreTracks,
+                error: false
             };
         case ADD_TOP_TRACKS:
             return {

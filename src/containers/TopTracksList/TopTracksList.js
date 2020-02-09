@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 
 import TracksList from "../../components/TracksList/TracksList";
-import {getTopTracks} from "../../store/actions/tracks";
+import {getMoreTopTracks, getTopTracks} from "../../store/actions/tracks";
 import withErrorHandler from "../../hoc/withErrorHandler";
 import axios from '../../api/axios-lastfm';
 import Error from "../../components/UI/Error/Error";
@@ -11,24 +11,18 @@ import ShowMore from "../../components/TracksList/ShowMore/ShowMore";
 import PropTypes from "prop-types";
 
 class TopTracksList extends Component {
-    state = {
-        pageNum: 1
-    };
-
     componentDidMount() {
-        this.props.getTopTracks(5);
+        this.props.getTracks(5);
     }
 
     handleClick = () => {
-        this.props.getTopTracks(15, this.state.pageNum);
-        this.setState(state => ({
-            pageNum: state.pageNum + 1
-        }));
+        this.props.getMoreTracks(15);
     };
 
     render() {
         const tracksList = (this.props.error && !this.props.tracksList.length) ? <Error message='Something wrong.'/> :
             <TracksList tracks={this.props.tracksList}/>;
+
         const loader = this.props.loading ? <Loader/> : null;
         const moreButton = this.props.isMoreTracks ? <ShowMore onClick={this.handleClick}/> : null;
 
@@ -54,7 +48,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        getTopTracks: (limit, page) => dispatch(getTopTracks(limit, page))
+        getTracks: (count) => dispatch(getTopTracks(count)),
+        getMoreTracks: (count) => dispatch(getMoreTopTracks(count))
     };
 };
 
