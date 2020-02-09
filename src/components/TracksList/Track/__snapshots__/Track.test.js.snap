@@ -1,0 +1,76 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Track /> render correctly Track component 1`] = `
+<BrowserRouter>
+  <Router
+    history={
+      Object {
+        "action": "POP",
+        "block": [Function],
+        "createHref": [Function],
+        "go": [Function],
+        "goBack": [Function],
+        "goForward": [Function],
+        "length": 1,
+        "listen": [Function],
+        "location": Object {
+          "hash": "",
+          "pathname": "/",
+          "search": "",
+          "state": undefined,
+        },
+        "push": [Function],
+        "replace": [Function],
+      }
+    }
+  >
+    <Track
+      artistName="artistName"
+      artistUrl="artistUrl"
+      imageUrl="imageUrl"
+      name="name"
+    >
+      <div
+        className="Track"
+      >
+        <div
+          className="Img"
+        >
+          <img
+            alt="name"
+            src="imageUrl"
+          />
+        </div>
+        <div>
+          <h5>
+            name
+          </h5>
+          <h6>
+            <Link
+              to="/artist/artistName"
+            >
+              <LinkAnchor
+                href="/artist/artistName"
+                navigate={[Function]}
+              >
+                <a
+                  href="/artist/artistName"
+                  onClick={[Function]}
+                >
+                  artistName
+                </a>
+              </LinkAnchor>
+            </Link>
+            <a
+              className="Link"
+              href="artistUrl"
+            >
+              last.fm
+            </a>
+          </h6>
+        </div>
+      </div>
+    </Track>
+  </Router>
+</BrowserRouter>
+`;

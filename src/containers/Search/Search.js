@@ -8,7 +8,7 @@ import Loader from "../../components/UI/Loader/Loader";
 import * as api from "../../api/tracks";
 import ShowMore from "../../components/TracksList/ShowMore/ShowMore";
 
-class Search extends Component {
+export class Search extends Component {
     state = {
         query: '',
         tracksList: [],
@@ -43,7 +43,7 @@ class Search extends Component {
         const isLoadMore = this.state.query === query;
         api.searchTracks(query, 15, isLoadMore ? this.state.pageNum : 1)
             .then(response => {
-                if (!response.data.results || !response.data.results.trackmatches || !response.data.results.trackmatches.track) {
+                if (!this.isResponseValid(response)) {
                     this.searchError();
                     return;
                 }
@@ -83,7 +83,7 @@ class Search extends Component {
     };
 
     isResponseValid = (response) => {
-        return response.data.tracks && response.data.tracks.track && response.data.tracks.track.length;
+        return response.data.results && response.data.results.trackmatches && response.data.results.trackmatches.track;
     };
 
     searchError = () => {
@@ -94,7 +94,6 @@ class Search extends Component {
     };
 
     render() {
-        let title = this.state.loading ? null : <h2 className="page-title">Search results for: '{this.state.query}'</h2>;
         let tracksList;
         if (this.state.tracksList.length) {
             tracksList = this.state.error ? <Error message='Something wrong.'/> : <TracksList tracks={this.state.tracksList}/>;
@@ -102,15 +101,12 @@ class Search extends Component {
             tracksList = <p className="text-center">No tracks found.</p>;
         }
 
-        const loader = this.state.loading ? <Loader/> : null;
-        const moreButton = this.state.isMoreTracks ? <ShowMore onClick={this.handleClick} /> : null;
-
         return (
             <React.Fragment>
-                {title}
+                <h2 className="page-title">Search results for: '{this.state.query}'</h2>
                 {tracksList}
-                {loader}
-                {moreButton}
+                {this.state.loading ? <Loader/> : null}
+                {this.state.isMoreTracks ? <ShowMore onClick={this.handleClick} /> : null}
             </React.Fragment>
         );
     }

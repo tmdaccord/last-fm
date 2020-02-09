@@ -10,9 +10,11 @@ import Loader from "../../components/UI/Loader/Loader";
 import ShowMore from "../../components/TracksList/ShowMore/ShowMore";
 import PropTypes from "prop-types";
 
-class TopTracksList extends Component {
+export class TopTracksList extends Component {
     componentDidMount() {
-        this.props.getTracks(5);
+        if (!this.props.tracksList.length) {
+            this.props.getTracks(5);
+        }
     }
 
     handleClick = () => {
@@ -20,18 +22,13 @@ class TopTracksList extends Component {
     };
 
     render() {
-        const tracksList = (this.props.error && !this.props.tracksList.length) ? <Error message='Something wrong.'/> :
-            <TracksList tracks={this.props.tracksList}/>;
-
-        const loader = this.props.loading ? <Loader/> : null;
-        const moreButton = this.props.isMoreTracks ? <ShowMore onClick={this.handleClick}/> : null;
-
         return (
             <React.Fragment>
                 <h2 className="page-title">Top Tracks</h2>
-                {tracksList}
-                {loader}
-                {moreButton}
+                {(this.props.error && !this.props.tracksList.length) ? <Error message='Something wrong.'/> :
+                    <TracksList tracks={this.props.tracksList}/>}
+                {this.props.loading ? <Loader/> : null}
+                {this.props.isMoreTracks ? <ShowMore onClick={this.handleClick}/> : null}
             </React.Fragment>
         );
     }

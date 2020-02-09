@@ -5,7 +5,6 @@ import {Link} from "react-router-dom";
 import PropTypes from 'prop-types';
 
 const Track = (props) => {
-    const artistLink = props.artistUrl ? <a className={classes.Link} href={props.artistUrl}>last.fm</a> : null;
     return (
         <div className={classes.Track}>
             <div className={classes.Img}>
@@ -13,7 +12,10 @@ const Track = (props) => {
             </div>
             <div>
                 <h5>{props.name}</h5>
-                <h6><Link to={`/artist/${props.artistName}`}>{props.artistName}</Link> {artistLink}</h6>
+                <h6>
+                    <Link to={`/artist/${props.artistName}`}>{props.artistName}</Link>
+                    {props.artistUrl ? <a className={classes.Link} href={props.artistUrl}>last.fm</a> : null}
+                </h6>
             </div>
         </div>
     );
